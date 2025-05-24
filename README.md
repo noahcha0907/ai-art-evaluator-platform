@@ -1,0 +1,1 @@
+# ai-art-evaluator-platform
