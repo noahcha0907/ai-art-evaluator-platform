@@ -4,7 +4,12 @@ from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
-CORS(app)
+# Allow CORS requests from the React development server
+CORS(
+    app,
+    resources={r"/api/*": {"origins": "http://localhost:3000"}},
+)
+app.config["CORS_HEADERS"] = "Content-Type"
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
